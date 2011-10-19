@@ -11,7 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
 
   m_plot       = new QwtPlot(this);
-  m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
+//  m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
+  m_magnifier  = new QwtPlotMagnifier(m_plot->canvas());
+  m_panner     = new QwtPlotPanner(m_plot->canvas());
   m_legend     = new QwtLegend();
   m_serialPort = new QextSerialPort(QextSerialPort::EventDriven);
 
@@ -37,7 +39,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-  delete m_zoomer;
+  delete m_panner;
+  delete m_magnifier;
+//  delete m_zoomer;
   delete m_legend;
   delete m_plot;
   delete ui;
@@ -151,13 +155,6 @@ void MainWindow::CurveToggled(QwtPlotItem * plotItem, bool checked)
 {
   plotItem->setVisible(checked);
   m_plot->replot();
-
-//  QString curveName = ((QCheckBox *)sender())->text();
-
-//  CurveMapIter iter = m_curves.find(curveName);
-//  iter.value()->setVisible(checked);
-
-//  m_plot->replot();
 }
 
 void MainWindow::ResetZoom()

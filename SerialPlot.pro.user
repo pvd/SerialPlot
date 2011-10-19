@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by Qt Creator 2.3.0, 2011-10-19T21:23:03. -->
+<!-- Written by Qt Creator 2.3.0, 2011-10-19T22:05:17. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -111,8 +111,8 @@
       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.2">
-      <value type="QString" key="ProjectExplorer.ProcessStep.Arguments">/Users/peter/Library/Frameworks/libqextserialport* SerialPlot.app/Contents/Frameworks</value>
-      <value type="QString" key="ProjectExplorer.ProcessStep.Command">cp</value>
+      <value type="QString" key="ProjectExplorer.ProcessStep.Arguments">-p SerialPlot.app/Contents/Frameworks</value>
+      <value type="QString" key="ProjectExplorer.ProcessStep.Command">mkdir</value>
       <value type="bool" key="ProjectExplorer.ProcessStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProcessStep.WorkingDirectory">%{buildDir}</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Custom Process Step</value>
@@ -120,8 +120,8 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.ProcessStep</value>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.3">
-      <value type="QString" key="ProjectExplorer.ProcessStep.Arguments">-p SerialPlot.app/Contents/Frameworks</value>
-      <value type="QString" key="ProjectExplorer.ProcessStep.Command">mkdir</value>
+      <value type="QString" key="ProjectExplorer.ProcessStep.Arguments">/Users/peter/Library/Frameworks/libqextserialport* SerialPlot.app/Contents/Frameworks</value>
+      <value type="QString" key="ProjectExplorer.ProcessStep.Command">cp</value>
       <value type="bool" key="ProjectExplorer.ProcessStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProcessStep.WorkingDirectory">%{buildDir}</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Custom Process Step</value>

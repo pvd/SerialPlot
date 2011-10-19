@@ -5,6 +5,8 @@
 #include <qwt/qwt_plot.h>
 #include <qwt/qwt_plot_curve.h>
 #include <qwt/qwt_plot_zoomer.h>
+#include <qwt/qwt_plot_magnifier.h>
+#include <qwt/qwt_plot_panner.h>
 #include <qwt/qwt_legend.h>
 #include <qextserialport.h>
 #include "SensorCurve.h"
@@ -25,13 +27,15 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow * ui;
-    QwtPlot *        m_plot;
-    QwtPlotZoomer *  m_zoomer;
-    QwtLegend *      m_legend;
-    QextSerialPort * m_serialPort;
+    Ui::MainWindow *   ui;
+    QwtPlot *          m_plot;
+    QwtPlotZoomer *    m_zoomer;
+    QwtPlotMagnifier * m_magnifier;
+    QwtPlotPanner *    m_panner;
+    QwtLegend *        m_legend;
+    QextSerialPort *   m_serialPort;
 
-    CurveMap         m_curves;
+    CurveMap           m_curves;
 
     void AddCurve(QString curveName, QString curveColor, int sampleCnt);
     void AddSample(QString curveName, qreal xValue, qreal yValue);
