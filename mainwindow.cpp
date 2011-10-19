@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
 
   m_plot       = new QwtPlot(this);
-//  m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
+  m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
   m_magnifier  = new QwtPlotMagnifier(m_plot->canvas());
   m_panner     = new QwtPlotPanner(m_plot->canvas());
   m_legend     = new QwtLegend();
@@ -41,7 +41,7 @@ MainWindow::~MainWindow()
 {
   delete m_panner;
   delete m_magnifier;
-//  delete m_zoomer;
+  delete m_zoomer;
   delete m_legend;
   delete m_plot;
   delete ui;
