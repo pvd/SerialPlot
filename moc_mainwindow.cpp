@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed Oct 19 21:48:46 2011
+** Created: Mon Oct 24 21:44:07 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,6 +38,8 @@ static const uint qt_meta_data_MainWindow[] = {
      100,   11,   11,   11, 0x0a,
      112,   11,   11,   11, 0x0a,
      129,   11,   11,   11, 0x0a,
+     146,   11,   11,   11, 0x0a,
+     166,  160,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -47,7 +49,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "DataAvailable()\0plotItem,checked\0"
     "CurveToggled(QwtPlotItem*,bool)\0"
     "ResetZoom()\0TestCreatePlot()\0"
-    "TestAddSamples()\0"
+    "TestAddSamples()\0TestAddKnob()\0param\0"
+    "ParamChangedValue(DynamicParam*)\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -86,9 +89,11 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 4: ResetZoom(); break;
         case 5: TestCreatePlot(); break;
         case 6: TestAddSamples(); break;
+        case 7: TestAddKnob(); break;
+        case 8: ParamChangedValue((*reinterpret_cast< DynamicParam*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

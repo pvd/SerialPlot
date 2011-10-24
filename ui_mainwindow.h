@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Oct 12 20:16:57 2011
+** Created: Mon Oct 24 20:50:09 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -32,9 +32,9 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QWidget *verticalLayoutWidget;
-    QVBoxLayout *plotLayout;
+    QVBoxLayout *layoutPlot;
     QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
+    QHBoxLayout *layoutSerialPort;
     QComboBox *cmbPorts;
     QPushButton *btnOpenPort;
     QPushButton *btnClosePort;
@@ -42,7 +42,9 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *btnResetZoom;
     QPushButton *btnCreatePlot;
-    QPushButton *btnAddSamples;
+    QPushButton *btnTest;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *layoutKnobs;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -51,44 +53,44 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(774, 480);
+        MainWindow->resize(774, 586);
         MainWindow->setMinimumSize(QSize(772, 480));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(0, 50, 761, 361));
-        plotLayout = new QVBoxLayout(verticalLayoutWidget);
-        plotLayout->setSpacing(6);
-        plotLayout->setContentsMargins(11, 11, 11, 11);
-        plotLayout->setObjectName(QString::fromUtf8("plotLayout"));
-        plotLayout->setContentsMargins(0, 0, 0, 0);
+        layoutPlot = new QVBoxLayout(verticalLayoutWidget);
+        layoutPlot->setSpacing(6);
+        layoutPlot->setContentsMargins(11, 11, 11, 11);
+        layoutPlot->setObjectName(QString::fromUtf8("layoutPlot"));
+        layoutPlot->setContentsMargins(0, 0, 0, 0);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(10, 10, 441, 32));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        layoutSerialPort = new QHBoxLayout(layoutWidget);
+        layoutSerialPort->setSpacing(6);
+        layoutSerialPort->setContentsMargins(11, 11, 11, 11);
+        layoutSerialPort->setObjectName(QString::fromUtf8("layoutSerialPort"));
+        layoutSerialPort->setContentsMargins(0, 0, 0, 0);
         cmbPorts = new QComboBox(layoutWidget);
         cmbPorts->setObjectName(QString::fromUtf8("cmbPorts"));
 
-        horizontalLayout->addWidget(cmbPorts);
+        layoutSerialPort->addWidget(cmbPorts);
 
         btnOpenPort = new QPushButton(layoutWidget);
         btnOpenPort->setObjectName(QString::fromUtf8("btnOpenPort"));
 
-        horizontalLayout->addWidget(btnOpenPort);
+        layoutSerialPort->addWidget(btnOpenPort);
 
         btnClosePort = new QPushButton(layoutWidget);
         btnClosePort->setObjectName(QString::fromUtf8("btnClosePort"));
 
-        horizontalLayout->addWidget(btnClosePort);
+        layoutSerialPort->addWidget(btnClosePort);
 
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(460, 10, 301, 32));
+        layoutWidget1->setGeometry(QRect(460, 10, 303, 32));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -104,11 +106,19 @@ public:
 
         horizontalLayout_2->addWidget(btnCreatePlot);
 
-        btnAddSamples = new QPushButton(layoutWidget1);
-        btnAddSamples->setObjectName(QString::fromUtf8("btnAddSamples"));
+        btnTest = new QPushButton(layoutWidget1);
+        btnTest->setObjectName(QString::fromUtf8("btnTest"));
 
-        horizontalLayout_2->addWidget(btnAddSamples);
+        horizontalLayout_2->addWidget(btnTest);
 
+        horizontalLayoutWidget = new QWidget(centralWidget);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(30, 410, 701, 111));
+        layoutKnobs = new QHBoxLayout(horizontalLayoutWidget);
+        layoutKnobs->setSpacing(6);
+        layoutKnobs->setContentsMargins(11, 11, 11, 11);
+        layoutKnobs->setObjectName(QString::fromUtf8("layoutKnobs"));
+        layoutKnobs->setContentsMargins(0, 0, 0, 0);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -133,7 +143,7 @@ public:
         btnClosePort->setText(QApplication::translate("MainWindow", "Close", 0, QApplication::UnicodeUTF8));
         btnResetZoom->setText(QApplication::translate("MainWindow", "Reset Zoom", 0, QApplication::UnicodeUTF8));
         btnCreatePlot->setText(QApplication::translate("MainWindow", "CreatePlot", 0, QApplication::UnicodeUTF8));
-        btnAddSamples->setText(QApplication::translate("MainWindow", "AddSamples", 0, QApplication::UnicodeUTF8));
+        btnTest->setText(QApplication::translate("MainWindow", "Test", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

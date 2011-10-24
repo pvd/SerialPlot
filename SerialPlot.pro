@@ -14,11 +14,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     SensorCurve.cpp \
-    SensorData.cpp
+    SensorData.cpp \
+    DynamicParam.cpp
 
 HEADERS  += mainwindow.h \
     SensorCurve.h \
-    SensorData.h
+    SensorData.h \
+    DynamicParam.h
 
 FORMS    += mainwindow.ui
 
@@ -36,6 +38,12 @@ else:unix:!symbian: LIBS += -L$$PWD/../qextserialport/src/build/ -lqextserialpor
 
 INCLUDEPATH += $$PWD/../qextserialport/src
 DEPENDPATH += $$PWD/../qextserialport/src
+
+
+
+
+
+
 
 
 

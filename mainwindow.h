@@ -10,6 +10,7 @@
 #include <qwt/qwt_legend.h>
 #include <qextserialport.h>
 #include "SensorCurve.h"
+#include <DynamicParam.h>
 
 namespace Ui {
     class MainWindow;
@@ -49,6 +50,10 @@ public slots:
     void ResetZoom();
     void TestCreatePlot();
     void TestAddSamples();
+    void TestAddKnob();
+
+    void ParamChangedValue(DynamicParam * param);
+
 };
 
 #endif // MAINWINDOW_H

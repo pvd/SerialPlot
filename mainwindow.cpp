@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include <qextserialenumerator.h>
 #include <QMessageBox>
-#include <QCheckBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   m_legend->setItemMode(QwtLegend::CheckableItem);
   m_plot->insertLegend(m_legend, QwtPlot::RightLegend);
-  ui->plotLayout->addWidget(m_plot);
+  ui->layoutPlot->addWidget(m_plot);
 
   QList<QextPortInfo> ports = QextSerialEnumerator::getPorts();
   for (int i = 0; i < ports.size(); i++)
@@ -34,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(m_plot, SIGNAL(legendChecked(QwtPlotItem*,bool)), this, SLOT(CurveToggled(QwtPlotItem*,bool)));
 
   connect(ui->btnCreatePlot, SIGNAL(clicked()), this, SLOT(TestCreatePlot()));
-  connect(ui->btnAddSamples, SIGNAL(clicked()), this, SLOT(TestAddSamples()));
+  connect(ui->btnTest, SIGNAL(clicked()), this, SLOT(TestAddKnob()));
 }
 
 MainWindow::~MainWindow()
@@ -185,5 +184,17 @@ void MainWindow::TestAddSamples()
   }
 
   offset = offset + 1;
+}
 
+void MainWindow::TestAddKnob()
+{
+  DynamicParam * param = new DynamicParam("test");
+  connect(param, SIGNAL(valueChanged(DynamicParam*)), this, SLOT(ParamChangedValue(DynamicParam*)));
+
+  ui->layoutKnobs->addWidget(param);
+}
+
+void MainWindow::ParamChangedValue(DynamicParam * param)
+{
+//
 }
