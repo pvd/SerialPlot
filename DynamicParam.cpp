@@ -1,7 +1,7 @@
 #include "DynamicParam.h"
 #include <QVBoxLayout>
 
-DynamicParam::DynamicParam(const QString & name, QWidget *parent) :
+DynamicParam::DynamicParam(const QString & name, const double value, QWidget *parent) :
   QFrame(parent), m_name(name)
 {
   QVBoxLayout *vbox = new QVBoxLayout(this);
@@ -10,6 +10,7 @@ DynamicParam::DynamicParam(const QString & name, QWidget *parent) :
   m_edtValue   = new QDoubleSpinBox(this);
   m_btnApply   = new QPushButton(this);
 
+  m_edtValue->setValue(value);
   m_lblCaption->setText(name);
   m_btnApply->setText("Apply");
 

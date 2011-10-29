@@ -106,7 +106,7 @@
       <height>111</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="layoutKnobs"/>
+    <layout class="QHBoxLayout" name="layoutParams"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

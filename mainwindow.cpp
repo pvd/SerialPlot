@@ -73,9 +73,6 @@ void MainWindow::ClosePort()
 void MainWindow::DataAvailable()
 {
   // command: arg1, arg2, arg3, ....
-  // curve: name, color, sampleCnt
-  // sample: curvename, x, y
-
   QByteArray a = m_serialPort->readLine();
   QString line = a;
   line.remove('\n');
@@ -93,6 +90,7 @@ void MainWindow::DataAvailable()
 
   if ( cmd == "curve" )
   {
+    // curve: name, color, sampleCnt
     if ( args.size() != 3 )
     {
       qDebug("Invalid number of arguments for curve command");
@@ -100,9 +98,11 @@ void MainWindow::DataAvailable()
     }
 
     AddCurve(args.at(0), args.at(1), args.at(2).toInt());
+    m_plot->replot();
   }
   else if ( cmd == "sample" )
   {
+    // sample: curvename, x, y
     if ( args.size() != 3 )
     {
       qDebug("Invalid number of arguments for sample command");
@@ -110,14 +110,23 @@ void MainWindow::DataAvailable()
     }
 
     AddSample(args.at(0), args.at(1).toDouble(), args.at(2).toDouble());
+    m_plot->replot();
+  }
+  else if ( cmd == "param" )
+  {
+    // param: paramName, value
+    if ( args.size() != 2 )
+    {
+      qDebug("Invalid number of arguments for param command");
+      return;
+    }
+
+    AddParam(args.at(0), args.at(1).toDouble());
   }
   else
   {
     qDebug("Invalid command");
   }
-
-  // TODO: Maybe replace this with a timer
-  m_plot->replot();
 }
 
 void MainWindow::AddCurve(QString curveName, QString curveColor, int sampleCnt)
@@ -150,6 +159,14 @@ void MainWindow::AddSample(QString curveName, qreal xValue, qreal yValue)
   iter.value()->AddSample(xValue, yValue);
 }
 
+void MainWindow::AddParam(QString paramName, double value)
+{
+  DynamicParam * param = new DynamicParam(paramName, value);
+  connect(param, SIGNAL(valueChanged(DynamicParam*)), this, SLOT(ParamChangedValue(DynamicParam*)));
+
+  ui->layoutParams->addWidget(param);
+}
+
 void MainWindow::CurveToggled(QwtPlotItem * plotItem, bool checked)
 {
   plotItem->setVisible(checked);
@@ -165,6 +182,14 @@ void MainWindow::ResetZoom()
   m_plot->replot();
 }
 
+void MainWindow::ParamChangedValue(DynamicParam * param)
+{
+  QString paramStr = QString("param:%1,%2\n").arg(param->name()).arg(param->value());
+
+  m_serialPort->write(paramStr.toAscii().constData());
+}
+
+//*************** DEBUG ********************
 void MainWindow::TestCreatePlot()
 {
   AddCurve("test", "blue", 100);
@@ -188,13 +213,12 @@ void MainWindow::TestAddSamples()
 
 void MainWindow::TestAddKnob()
 {
-  DynamicParam * param = new DynamicParam("test");
+  static int i = 1;
+
+  DynamicParam * param = new DynamicParam("test", i);
   connect(param, SIGNAL(valueChanged(DynamicParam*)), this, SLOT(ParamChangedValue(DynamicParam*)));
 
-  ui->layoutKnobs->addWidget(param);
+  ui->layoutParams->addWidget(param);
+  i++;
 }
 
-void MainWindow::ParamChangedValue(DynamicParam * param)
-{
-//
-}

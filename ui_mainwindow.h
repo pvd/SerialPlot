@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Oct 24 20:50:09 2011
+** Created: Sat Oct 29 14:54:30 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -44,7 +44,7 @@ public:
     QPushButton *btnCreatePlot;
     QPushButton *btnTest;
     QWidget *horizontalLayoutWidget;
-    QHBoxLayout *layoutKnobs;
+    QHBoxLayout *layoutParams;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -114,11 +114,11 @@ public:
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(30, 410, 701, 111));
-        layoutKnobs = new QHBoxLayout(horizontalLayoutWidget);
-        layoutKnobs->setSpacing(6);
-        layoutKnobs->setContentsMargins(11, 11, 11, 11);
-        layoutKnobs->setObjectName(QString::fromUtf8("layoutKnobs"));
-        layoutKnobs->setContentsMargins(0, 0, 0, 0);
+        layoutParams = new QHBoxLayout(horizontalLayoutWidget);
+        layoutParams->setSpacing(6);
+        layoutParams->setContentsMargins(11, 11, 11, 11);
+        layoutParams->setObjectName(QString::fromUtf8("layoutParams"));
+        layoutParams->setContentsMargins(0, 0, 0, 0);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));

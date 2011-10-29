@@ -40,7 +40,7 @@ private:
 
     void AddCurve(QString curveName, QString curveColor, int sampleCnt);
     void AddSample(QString curveName, qreal xValue, qreal yValue);
-
+    void AddParam(QString paramName, double value);
 public slots:
     void OpenPort();
     void ClosePort();
