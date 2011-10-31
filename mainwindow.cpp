@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
   m_plot       = new QwtPlot(this);
   m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
-  m_magnifier  = new QwtPlotMagnifier(m_plot->canvas());
-  m_panner     = new QwtPlotPanner(m_plot->canvas());
+//  m_magnifier  = new QwtPlotMagnifier(m_plot->canvas());
+//  m_panner     = new QwtPlotPanner(m_plot->canvas());
   m_legend     = new QwtLegend();
   m_serialPort = new QextSerialPort(QextSerialPort::EventDriven);
 
@@ -33,13 +33,13 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(m_plot, SIGNAL(legendChecked(QwtPlotItem*,bool)), this, SLOT(CurveToggled(QwtPlotItem*,bool)));
 
   connect(ui->btnCreatePlot, SIGNAL(clicked()), this, SLOT(TestCreatePlot()));
-  connect(ui->btnTest, SIGNAL(clicked()), this, SLOT(TestAddKnob()));
+  connect(ui->btnTest, SIGNAL(clicked()), this, SLOT(TestAddSamples()));
 }
 
 MainWindow::~MainWindow()
 {
-  delete m_panner;
-  delete m_magnifier;
+//  delete m_panner;
+//  delete m_magnifier;
   delete m_zoomer;
   delete m_legend;
   delete m_plot;
@@ -156,7 +156,11 @@ void MainWindow::AddSample(QString curveName, qreal xValue, qreal yValue)
     return;
   }
 
+
+//  qDebug("x: %f, y: %f", xValue, yValue);
   iter.value()->AddSample(xValue, yValue);
+
+  m_plot->replot();
 }
 
 void MainWindow::AddParam(QString paramName, double value)
@@ -201,14 +205,16 @@ void MainWindow::TestAddSamples()
   static int sample = 0;
   static int offset = 1;
 
-  for ( int i = 0; i < 360; i++ )
+  for ( int i = 0; i < 10; i++ )
   {
     AddSample("test", sample, sin(i) + offset);
-    AddSample("test2", sample++, cos(i) + offset);
+    AddSample("test2", sample, cos(i) + offset);
     m_plot->replot();
+
+    sample += 100;
   }
 
-  offset = offset + 1;
+//  offset = offset + 1;
 }
 
 void MainWindow::TestAddKnob()
