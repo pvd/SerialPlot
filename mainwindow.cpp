@@ -73,8 +73,7 @@ void MainWindow::ClosePort()
 void MainWindow::DataAvailable()
 {
   // command: arg1, arg2, arg3, ....
-  QByteArray a = m_serialPort->readLine();
-  QString line = a;
+  QString line = m_serialPort->readLine();
   line.remove('\n');
   line.remove('\r');
   QStringList lineItems = line.split(":", QString::SkipEmptyParts);
@@ -114,14 +113,14 @@ void MainWindow::DataAvailable()
   }
   else if ( cmd == "param" )
   {
-    // param: paramName, value
-    if ( args.size() != 2 )
+    // param: paramName, minValue, maxValue, value
+    if ( args.size() != 4 )
     {
       qDebug("Invalid number of arguments for param command");
       return;
     }
 
-    AddParam(args.at(0), args.at(1).toDouble());
+    AddParam(args.at(0), args.at(1).toDouble(), args.at(2).toDouble(), args.at(3).toDouble());
   }
   else
   {
@@ -156,16 +155,13 @@ void MainWindow::AddSample(QString curveName, qreal xValue, qreal yValue)
     return;
   }
 
-
-//  qDebug("x: %f, y: %f", xValue, yValue);
   iter.value()->AddSample(xValue, yValue);
-
   m_plot->replot();
 }
 
-void MainWindow::AddParam(QString paramName, double value)
+void MainWindow::AddParam(QString paramName, double minValue, double maxValue, double value )
 {
-  DynamicParam * param = new DynamicParam(paramName, value);
+  DynamicParam * param = new DynamicParam(paramName, minValue, maxValue, value);
   connect(param, SIGNAL(valueChanged(DynamicParam*)), this, SLOT(ParamChangedValue(DynamicParam*)));
 
   ui->layoutParams->addWidget(param);
@@ -221,7 +217,7 @@ void MainWindow::TestAddKnob()
 {
   static int i = 1;
 
-  DynamicParam * param = new DynamicParam("test", i);
+  DynamicParam * param = new DynamicParam("test", 0, 10, i);
   connect(param, SIGNAL(valueChanged(DynamicParam*)), this, SLOT(ParamChangedValue(DynamicParam*)));
 
   ui->layoutParams->addWidget(param);

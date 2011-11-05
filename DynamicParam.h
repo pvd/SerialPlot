@@ -16,7 +16,8 @@ protected:
     QPushButton *    m_btnApply;
 
 public:
-    DynamicParam(const QString & name, const double value, QWidget *parent = 0);
+    DynamicParam(const QString & name, const double minValue,
+                 const double maxValue, const double value, QWidget *parent = 0);
 
     QString name() { return m_name; }
     double value() { return m_edtValue->value(); }
