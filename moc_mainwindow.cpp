@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sat Nov 5 11:23:12 2011
+** Created: Sat Nov 12 11:10:27 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,25 +31,17 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x0a,
-      23,   11,   11,   11, 0x0a,
-      35,   11,   11,   11, 0x0a,
-      68,   51,   11,   11, 0x0a,
-     100,   11,   11,   11, 0x0a,
-     112,   11,   11,   11, 0x0a,
-     129,   11,   11,   11, 0x0a,
-     146,   11,   11,   11, 0x0a,
-     166,  160,   11,   11, 0x0a,
+      12,   11,   11,   11, 0x08,
+      23,   11,   11,   11, 0x08,
+      35,   11,   11,   11, 0x08,
+      57,   51,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0OpenPort()\0ClosePort()\0"
-    "DataAvailable()\0plotItem,checked\0"
-    "CurveToggled(QwtPlotItem*,bool)\0"
-    "ResetZoom()\0TestCreatePlot()\0"
-    "TestAddSamples()\0TestAddKnob()\0param\0"
+    "DataAvailable()\0param\0"
     "ParamChangedValue(DynamicParam*)\0"
 };
 
@@ -85,15 +77,10 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: OpenPort(); break;
         case 1: ClosePort(); break;
         case 2: DataAvailable(); break;
-        case 3: CurveToggled((*reinterpret_cast< QwtPlotItem*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 4: ResetZoom(); break;
-        case 5: TestCreatePlot(); break;
-        case 6: TestAddSamples(); break;
-        case 7: TestAddKnob(); break;
-        case 8: ParamChangedValue((*reinterpret_cast< DynamicParam*(*)>(_a[1]))); break;
+        case 3: ParamChangedValue((*reinterpret_cast< DynamicParam*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 9;
+        _id -= 4;
     }
     return _id;
 }

@@ -2,22 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <qwt/qwt_plot.h>
-#include <qwt/qwt_plot_curve.h>
-#include <qwt/qwt_plot_zoomer.h>
-#include <qwt/qwt_plot_magnifier.h>
-#include <qwt/qwt_plot_panner.h>
-#include <qwt/qwt_legend.h>
 #include <qextserialport.h>
-#include "SensorCurve.h"
-#include <DynamicParam.h>
+#include "PlotWindow.h"
+#include "ParamWindow.h"
 
 namespace Ui {
     class MainWindow;
 }
 
-typedef QMap<QString, SensorCurve *> CurveMap;
-typedef CurveMap::iterator           CurveMapIter;
 
 class MainWindow : public QMainWindow
 {
@@ -29,31 +21,15 @@ public:
 
 private:
     Ui::MainWindow *   ui;
-    QwtPlot *          m_plot;
-    QwtPlotZoomer *    m_zoomer;
-    QwtPlotMagnifier * m_magnifier;
-    QwtPlotPanner *    m_panner;
-    QwtLegend *        m_legend;
     QextSerialPort *   m_serialPort;
+    PlotWindow *       m_plotWindow;
+    ParamWindow *      m_paramWindow;
 
-    CurveMap           m_curves;
-
-    void AddCurve(QString curveName, QString curveColor, int sampleCnt);
-    void AddSample(QString curveName, qreal xValue, qreal yValue);
-    void AddParam(QString paramName, double minValue, double maxValue, double value);
-public slots:
+private slots:
     void OpenPort();
     void ClosePort();
     void DataAvailable();
-    void CurveToggled(QwtPlotItem * plotItem, bool checked);
-
-    void ResetZoom();
-    void TestCreatePlot();
-    void TestAddSamples();
-    void TestAddKnob();
-
     void ParamChangedValue(DynamicParam * param);
-
 };
 
 #endif // MAINWINDOW_H

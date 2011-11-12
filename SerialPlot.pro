@@ -15,14 +15,23 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     SensorCurve.cpp \
     SensorData.cpp \
-    DynamicParam.cpp
+    DynamicParam.cpp \
+    serialSelectDialog.cpp \
+    PlotWindow.cpp \
+    ParamWindow.cpp
 
 HEADERS  += mainwindow.h \
     SensorCurve.h \
     SensorData.h \
-    DynamicParam.h
+    DynamicParam.h \
+    serialSelectDialog.h \
+    PlotWindow.h \
+    ParamWindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    serialSelectDialog.ui \
+    PlotWindow.ui \
+    ParamWindow.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../qwt-6.0.1/lib/release/ -lqwt
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../qwt-6.0.1/lib/debug/ -lqwt
@@ -38,6 +47,23 @@ else:unix:!symbian: LIBS += -L$$PWD/../qextserialport/src/build/ -lqextserialpor
 
 INCLUDEPATH += $$PWD/../qextserialport/src
 DEPENDPATH += $$PWD/../qextserialport/src
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
