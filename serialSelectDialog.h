@@ -14,6 +14,9 @@ class SerialSelectDialog : public QDialog
 private:
     Ui::SerialSelectDialog *ui;
 
+private slots:
+    void doubleClicked(QModelIndex index);
+
 public:
     explicit SerialSelectDialog(QWidget *parent = 0);
     ~SerialSelectDialog();

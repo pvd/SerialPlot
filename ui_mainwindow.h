@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat Nov 12 11:06:01 2011
+** Created: Mon Nov 14 21:03:57 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,7 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
-#include <QtGui/QGridLayout>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMdiArea>
@@ -32,7 +32,7 @@ public:
     QAction *actionOpen;
     QAction *actionClose;
     QWidget *centralWidget;
-    QGridLayout *gridLayout;
+    QHBoxLayout *horizontalLayout;
     QMdiArea *mdiArea;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
@@ -53,17 +53,17 @@ public:
         actionClose->setObjectName(QString::fromUtf8("actionClose"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        gridLayout = new QGridLayout(centralWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        horizontalLayout = new QHBoxLayout(centralWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         mdiArea = new QMdiArea(centralWidget);
         mdiArea->setObjectName(QString::fromUtf8("mdiArea"));
         mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         mdiArea->setTabShape(QTabWidget::Rounded);
 
-        gridLayout->addWidget(mdiArea, 0, 0, 1, 1);
+        horizontalLayout->addWidget(mdiArea);
 
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
@@ -77,12 +77,15 @@ public:
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
+        toolBar->setToolButtonStyle(Qt::ToolButtonTextOnly);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         menuBar->addAction(menuSerial_Port->menuAction());
         menuSerial_Port->addAction(actionOpen);
         menuSerial_Port->addAction(actionClose);
         toolBar->addSeparator();
+        toolBar->addAction(actionOpen);
+        toolBar->addAction(actionClose);
 
         retranslateUi(MainWindow);
 
@@ -92,8 +95,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        actionOpen->setText(QApplication::translate("MainWindow", "Open", 0, QApplication::UnicodeUTF8));
-        actionClose->setText(QApplication::translate("MainWindow", "Close", 0, QApplication::UnicodeUTF8));
+        actionOpen->setText(QApplication::translate("MainWindow", "Open Serial Port", 0, QApplication::UnicodeUTF8));
+        actionClose->setText(QApplication::translate("MainWindow", "Close Serial Port", 0, QApplication::UnicodeUTF8));
         menuSerial_Port->setTitle(QApplication::translate("MainWindow", "Serial Port", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

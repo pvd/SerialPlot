@@ -15,11 +15,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
   m_plotWindow = new PlotWindow(this);
   ui->mdiArea->addSubWindow(m_plotWindow);
-  m_plotWindow->setGeometry(5, 5, 400, 300);
+  m_plotWindow->setGeometry(0, 0, 400, 300);
 
   m_paramWindow = new ParamWindow(this);
   ui->mdiArea->addSubWindow(m_paramWindow);
-  connect(m_paramWindow, SIGNAL(ParamChangedValue(DynamicParam*)), this, SLOT(ParamChangedValue(DynamicParam*)));
+  connect(m_paramWindow, SIGNAL(ParamChangedValue(QString, QString)),
+          this, SLOT(ParamChangedValue(QString, QString)));
+
+  m_logWindow = new LogWindow(this);
+  ui->mdiArea->addSubWindow(m_logWindow);
 
   connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(OpenPort()));
   connect(ui->actionClose, SIGNAL(triggered()), this, SLOT(ClosePort()));
@@ -75,7 +79,7 @@ void MainWindow::DataAvailable()
 
   if ( lineItems.count() != 2 )
   {
-    qDebug("Received line with invalid nr of items: %d", lineItems.count());
+    m_logWindow->AddMessage(line);
     return;
   }
 
@@ -114,16 +118,17 @@ void MainWindow::DataAvailable()
     }
 
     m_paramWindow->AddParam(args.at(0), args.at(1).toDouble(), args.at(2).toDouble(), args.at(3).toDouble());
+
   }
   else
   {
-    qDebug("Invalid command");
+    m_logWindow->AddMessage(line);
   }
 }
 
-void MainWindow::ParamChangedValue(DynamicParam * param)
+void MainWindow::ParamChangedValue(QString name, QString value)
 {
-  QString paramStr = QString("param:%1,%2\n").arg(param->name()).arg(param->value());
+  QString paramStr = QString("param:%1,%2\n").arg(name).arg(value);
 
   m_serialPort->write(paramStr.toAscii().constData());
 }

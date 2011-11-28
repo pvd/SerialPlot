@@ -7,11 +7,11 @@ PlotWindow::PlotWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     m_plot       = new QwtPlot(this);
-  //  m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
+    m_zoomer     = new QwtPlotZoomer(m_plot->canvas());
   //  m_magnifier  = new QwtPlotMagnifier(m_plot->canvas());
   //  m_panner     = new QwtPlotPanner(m_plot->canvas());
 
-    m_legend     = new QwtLegend();
+    m_legend = new QwtLegend();
     m_legend->setItemMode(QwtLegend::CheckableItem);
     m_plot->insertLegend(m_legend, QwtPlot::RightLegend);
 
@@ -23,6 +23,7 @@ PlotWindow::PlotWindow(QWidget *parent) :
 
 PlotWindow::~PlotWindow()
 {
+    delete m_zoomer;
     delete m_plot;
     delete ui;
 }
@@ -57,17 +58,22 @@ void PlotWindow::AddCurve(QString curveName, QString curveColor, int sampleCnt)
 
   SensorCurve * newCurve = new SensorCurve(curveName, curveColor, sampleCnt);
   m_curves.insert(curveName, newCurve);
+  newCurve->setVisible(false);
   newCurve->attach(m_plot);
 }
 
 void PlotWindow::AddSample(QString curveName, qreal xValue, qreal yValue)
-{
+{  
   CurveMapIter iter = m_curves.find(curveName);
   if ( iter == m_curves.end() )
   {
     qDebug("Unknown curve name");
     return;
   }
+
+  // Don't add the sample when the plot is paused
+  if ( ui->actionPause->isChecked() )
+    return;
 
   iter.value()->AddSample(xValue, yValue);
   m_plot->replot();

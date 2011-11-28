@@ -20,7 +20,7 @@ public slots:
     void AddParam(QString paramName, double minValue, double maxValue, double value);
 
 signals:
-      void ParamChangedValue(DynamicParam * param);
+      void ParamChangedValue(QString, QString);
 
 private:
     Ui::ParamWindow *ui;

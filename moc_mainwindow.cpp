@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sat Nov 12 11:10:27 2011
+** Created: Mon Nov 28 21:46:29 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -34,15 +34,15 @@ static const uint qt_meta_data_MainWindow[] = {
       12,   11,   11,   11, 0x08,
       23,   11,   11,   11, 0x08,
       35,   11,   11,   11, 0x08,
-      57,   51,   11,   11, 0x08,
+      62,   51,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0OpenPort()\0ClosePort()\0"
-    "DataAvailable()\0param\0"
-    "ParamChangedValue(DynamicParam*)\0"
+    "DataAvailable()\0name,value\0"
+    "ParamChangedValue(QString,QString)\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -77,7 +77,7 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: OpenPort(); break;
         case 1: ClosePort(); break;
         case 2: DataAvailable(); break;
-        case 3: ParamChangedValue((*reinterpret_cast< DynamicParam*(*)>(_a[1]))); break;
+        case 3: ParamChangedValue((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         default: ;
         }
         _id -= 4;

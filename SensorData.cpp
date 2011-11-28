@@ -37,11 +37,17 @@ void SensorData::AddSample(qreal xpos, qreal ypos)
   m_bounds.setLeft(m_samples.first().x());
   m_bounds.setWidth(m_samples.last().x() - m_samples.first().x());
 
-  if ( m_bounds.top() > ypos )
-    m_bounds.setTop(ypos);
+  // find the top and bottom value
+  qreal bottom = 0;
+  qreal top    = 0;
+  for ( QVector<QPointF>::Iterator i = m_samples.begin(); i != m_samples.end(); i++ )
+  {
+    bottom = qMax(bottom, i->y());
+    top    = qMin(top, i->y());
+  }
 
-  if ( m_bounds.height() < ypos )
-     m_bounds.setHeight(ypos);
+  m_bounds.setBottom(bottom);
+  m_bounds.setTop(top);
 }
 
 void SensorData::Clear()

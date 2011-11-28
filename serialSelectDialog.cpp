@@ -14,6 +14,8 @@ SerialSelectDialog::SerialSelectDialog(QWidget *parent) :
     {
       ui->listWidget->addItem(ports.at(i).portName);
     }
+
+    connect(ui->listWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(doubleClicked(QModelIndex)));
 }
 
 SerialSelectDialog::~SerialSelectDialog()
@@ -24,6 +26,11 @@ SerialSelectDialog::~SerialSelectDialog()
 QString SerialSelectDialog::SelectedPort()
 {
   return ui->listWidget->currentItem()->text();
+}
+
+void SerialSelectDialog::doubleClicked(QModelIndex index)
+{
+  accept();
 }
 
 

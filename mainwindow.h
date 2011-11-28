@@ -5,6 +5,7 @@
 #include <qextserialport.h>
 #include "PlotWindow.h"
 #include "ParamWindow.h"
+#include "LogWindow.h"
 
 namespace Ui {
     class MainWindow;
@@ -24,12 +25,13 @@ private:
     QextSerialPort *   m_serialPort;
     PlotWindow *       m_plotWindow;
     ParamWindow *      m_paramWindow;
+    LogWindow *        m_logWindow;
 
 private slots:
     void OpenPort();
     void ClosePort();
     void DataAvailable();
-    void ParamChangedValue(DynamicParam * param);
+    void ParamChangedValue(QString name, QString value);
 };
 
 #endif // MAINWINDOW_H
