@@ -277,7 +277,7 @@ That's it!!! The bundling is now complete and the application *should* now be po
 
 ### Bundle Cocoa platform plugin
 
-**Note**: Unlike Qt5, there doesn't seem to be a libqcocoa.dylib library.
+**Note**: Unlike Qt5, there doesn't seem to be a `libqcocoa.dylib` library in Qt4.
 
 ## Further build details
 
