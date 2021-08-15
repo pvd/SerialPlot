@@ -192,7 +192,9 @@ To make SerialPlot portable, the Qwt, QExtSerialPort and Qt frameworks, upon whi
 
 See [Qt for macOS - Deployment](https://doc.qt.io/qt-5/macos-deployment.html) for further details.
 
-This bundling of the frameworks can be done either manually, which I cover below, or by using the purpose built script `bundleframeworks_SerialPlot.sh`, which is in the `support/` directory on the Github repository. You *could* also use the [macdeployqt](https://doc.qt.io/qt-5/macos-deployment.html#the-mac-deployment-tool) command, which I am not going to cover here.
+This bundling of the frameworks can be done either manually, which I cover below, or by using the purpose built script [`bundleframeworks_SerialPlot.sh`](https://github.com/pvd/SerialPlot/blob/master/Support/bundleframeworks_SerialPlot.sh), which is in the [`support/`](https://github.com/pvd/SerialPlot/blob/master/Support/) directory on the Github repository. 
+
+You *could* also use the [macdeployqt](https://doc.qt.io/qt-5/macos-deployment.html#the-mac-deployment-tool) command, which I am not going to cover here.
 
 If you want an *explanation* as to why these commands are necessary then see the whole framework/library dependancy discovery process in the last section of [SerialPlot – a Qt adventure on OS X](https://gr33nonline.wordpress.com/2021/07/25/serialplot-a-qt-adventure-on-os-x/).
 
